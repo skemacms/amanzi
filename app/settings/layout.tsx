@@ -48,7 +48,7 @@ export default function SettingsLayout({ children }: { children: React.ReactNode
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`flex items-center gap-2.5 rounded-md px-3 py-2 text-sm transition-colors ${
+                  className={`flex items-center gap-2.5 rounded-xs px-3 py-2 text-sm transition-colors ${
                     isActive
                       ? 'bg-accent/10 font-medium text-accent'
                       : 'text-muted-foreground hover:bg-muted hover:text-foreground'

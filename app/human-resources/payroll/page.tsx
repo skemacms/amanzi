@@ -31,7 +31,7 @@ export default function PayrollPage() {
             Gestion des periodes et calcul de la paie
           </p>
         </div>
-        <button className="inline-flex items-center gap-2 rounded-md bg-accent px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-accent/90">
+        <button className="inline-flex items-center gap-2 rounded-xs bg-accent px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-accent/90">
           <Plus className="h-4 w-4" />
           Nouvelle periode
         </button>
@@ -40,12 +40,12 @@ export default function PayrollPage() {
       <div className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3">
         {periods.map((period) => (
           <Link key={period.id} href={`/human-resources/payroll/${period.id}`}>
-            <div className="rounded-lg border bg-card p-5 transition-all hover:shadow-md hover:border-accent/30">
+            <div className="rounded-xs border bg-card p-5 transition-all hover:shadow-md hover:border-accent/30">
               <div className="mb-3 flex items-center justify-between">
                 <h3 className="text-base font-semibold text-foreground">
                   {MONTH_NAMES[period.month]} {period.year}
                 </h3>
-                <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${STATUS_COLORS[period.status]}`}>
+                <span className={`rounded-xs px-2.5 py-0.5 text-xs font-medium ${STATUS_COLORS[period.status]}`}>
                   {PAYROLL_STATUS_LABELS[period.status]}
                 </span>
               </div>
@@ -56,7 +56,7 @@ export default function PayrollPage() {
                 </div>
                 {period.status === PayrollPeriodStatus.DRAFT && (
                   <div className="mt-3">
-                    <span className="inline-flex items-center gap-1 rounded-md bg-sky-50 px-3 py-1.5 text-xs font-medium text-sky-700">
+                    <span className="inline-flex items-center gap-1 rounded-xs bg-sky-50 px-3 py-1.5 text-xs font-medium text-sky-700">
                       <Calculator className="h-3 w-3" />
                       Calculer
                     </span>
@@ -64,7 +64,7 @@ export default function PayrollPage() {
                 )}
                 {period.status === PayrollPeriodStatus.CALCULATED && (
                   <div className="mt-3">
-                    <span className="inline-flex items-center gap-1 rounded-md bg-emerald-50 px-3 py-1.5 text-xs font-medium text-emerald-700">
+                    <span className="inline-flex items-center gap-1 rounded-xs bg-emerald-50 px-3 py-1.5 text-xs font-medium text-emerald-700">
                       <CheckCircle2 className="h-3 w-3" />
                       Valider
                     </span>

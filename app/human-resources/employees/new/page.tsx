@@ -6,7 +6,7 @@ import { ArrowLeft, Save } from 'lucide-react';
 import { MaritalStatus, Zone } from '@/core/types/enums';
 import { useToast } from '@/core/stores/toast-store';
 
-const inputClass = 'w-full rounded-md border bg-background px-3 py-2 text-sm outline-none transition-colors focus:border-accent focus:ring-1 focus:ring-accent/30';
+const inputClass = 'w-full rounded-xs border bg-background px-3 py-2 text-sm outline-none transition-colors focus:border-accent focus:ring-1 focus:ring-accent/30';
 const labelClass = 'mb-1.5 block text-xs font-medium text-muted-foreground';
 
 export default function NewEmployeePage() {
@@ -59,7 +59,7 @@ export default function NewEmployeePage() {
 
       <form onSubmit={handleSubmit} className="grid max-w-4xl grid-cols-1 gap-4 lg:grid-cols-2">
         {/* Identity */}
-        <div className="rounded-lg border bg-card p-5 lg:col-span-2">
+        <div className="rounded-xs border bg-card p-5 lg:col-span-2">
           <h2 className="mb-3 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">Identite</h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
             <label className="block">
@@ -103,7 +103,7 @@ export default function NewEmployeePage() {
         </div>
 
         {/* Professional */}
-        <div className="rounded-lg border bg-card p-5 lg:col-span-2">
+        <div className="rounded-xs border bg-card p-5 lg:col-span-2">
           <h2 className="mb-3 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">Professionnel</h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
             <label className="block">
@@ -137,7 +137,7 @@ export default function NewEmployeePage() {
         </div>
 
         {/* Compensation */}
-        <div className="rounded-lg border bg-card p-5 lg:col-span-2">
+        <div className="rounded-xs border bg-card p-5 lg:col-span-2">
           <h2 className="mb-3 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">Remuneration</h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <label className="block">
@@ -153,7 +153,7 @@ export default function NewEmployeePage() {
 
         {/* Submit */}
         <div className="lg:col-span-2">
-          <button type="submit" className="inline-flex items-center gap-2 rounded-md bg-accent px-6 py-2 text-sm font-medium text-white transition-colors hover:bg-accent/90">
+          <button type="submit" className="inline-flex items-center gap-2 rounded-xs bg-accent px-6 py-2 text-sm font-medium text-white transition-colors hover:bg-accent/90">
             <Save className="h-4 w-4" />
             Enregistrer
           </button>

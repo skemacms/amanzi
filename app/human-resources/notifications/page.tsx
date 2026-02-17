@@ -33,7 +33,7 @@ export default function NotificationsPage() {
         {unreadCount > 0 && (
           <button
             onClick={markAllAsRead}
-            className="inline-flex items-center gap-2 rounded-md border bg-card px-3 py-2 text-sm font-medium text-foreground hover:bg-muted"
+            className="inline-flex items-center gap-2 rounded-xs border bg-card px-3 py-2 text-sm font-medium text-foreground hover:bg-muted"
           >
             <CheckCheck className="h-4 w-4" />
             Tout marquer comme lu
@@ -45,7 +45,7 @@ export default function NotificationsPage() {
         {notifications.map((notif) => (
           <div
             key={notif.id}
-            className={`flex items-start gap-4 rounded-lg border bg-card p-4 transition-all ${
+            className={`flex items-start gap-4 rounded-xs border bg-card p-4 transition-all ${
               !notif.isRead ? 'border-accent/20 bg-accent/5' : ''
             }`}
           >
@@ -58,7 +58,7 @@ export default function NotificationsPage() {
             </div>
             <div className="flex-1">
               <div className="mb-1 flex items-center gap-2">
-                <span className="rounded-md bg-muted px-2 py-0.5 text-[10px] font-medium text-muted-foreground">
+                <span className="rounded-xs bg-muted px-2 py-0.5 text-[10px] font-medium text-muted-foreground">
                   {NOTIFICATION_TYPE_LABELS[notif.type]}
                 </span>
                 <span className="text-xs text-muted-foreground">
@@ -77,7 +77,7 @@ export default function NotificationsPage() {
             {!notif.isRead && (
               <button
                 onClick={() => markAsRead(notif.id)}
-                className="shrink-0 rounded-md bg-muted px-3 py-1.5 text-xs font-medium text-foreground hover:bg-muted/80"
+                className="shrink-0 rounded-xs bg-muted px-3 py-1.5 text-xs font-medium text-foreground hover:bg-muted/80"
               >
                 Marquer lu
               </button>

@@ -32,8 +32,8 @@ export default function HrDashboard() {
           const Icon = stat.icon;
           return (
             <Link key={stat.label} href={stat.href}>
-              <div className="flex items-center gap-3 rounded-lg border bg-card p-4 transition-all hover:shadow-md hover:border-accent/30">
-                <div className={`flex h-10 w-10 items-center justify-center rounded-lg ${stat.color}`}>
+              <div className="flex items-center gap-3 rounded-xs border bg-card p-4 transition-all hover:shadow-md hover:border-accent/30">
+                <div className={`flex h-10 w-10 items-center justify-center rounded-xs ${stat.color}`}>
                   <Icon className="h-5 w-5" />
                 </div>
                 <div>
@@ -56,7 +56,7 @@ export default function HrDashboard() {
             const Icon = action.icon;
             return (
               <Link key={action.label} href={action.href}>
-                <div className="flex items-center justify-between rounded-lg border bg-card p-4 transition-all hover:shadow-sm hover:border-accent/30">
+                <div className="flex items-center justify-between rounded-xs border bg-card p-4 transition-all hover:shadow-sm hover:border-accent/30">
                   <div className="flex items-center gap-3">
                     <Icon className="h-4 w-4 text-muted-foreground" />
                     <span className="text-sm font-medium text-foreground">{action.label}</span>

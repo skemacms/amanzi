@@ -43,7 +43,7 @@ export default function PeriodDetailPage({ params }: { params: Promise<{ periodI
           </p>
         </div>
         <div className="flex items-center gap-3">
-          <span className={`rounded-full px-3 py-1 text-xs font-medium ${
+          <span className={`rounded-xs px-3 py-1 text-xs font-medium ${
             period.status === PayrollPeriodStatus.DRAFT ? 'bg-muted text-muted-foreground' :
             period.status === PayrollPeriodStatus.CALCULATED ? 'bg-sky-50 text-sky-700' :
             period.status === PayrollPeriodStatus.VALIDATED ? 'bg-emerald-50 text-emerald-700' :
@@ -52,13 +52,13 @@ export default function PeriodDetailPage({ params }: { params: Promise<{ periodI
             {PAYROLL_STATUS_LABELS[period.status]}
           </span>
           {period.status === PayrollPeriodStatus.DRAFT && (
-            <button className="inline-flex items-center gap-2 rounded-md bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-accent/90">
+            <button className="inline-flex items-center gap-2 rounded-xs bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-accent/90">
               <Calculator className="h-4 w-4" />
               Lancer le calcul
             </button>
           )}
           {period.status === PayrollPeriodStatus.CALCULATED && (
-            <button className="inline-flex items-center gap-2 rounded-md bg-emerald-600 px-4 py-2 text-sm font-medium text-white hover:bg-emerald-700">
+            <button className="inline-flex items-center gap-2 rounded-xs bg-emerald-600 px-4 py-2 text-sm font-medium text-white hover:bg-emerald-700">
               <CheckCircle2 className="h-4 w-4" />
               Valider la paie
             </button>
@@ -67,7 +67,7 @@ export default function PeriodDetailPage({ params }: { params: Promise<{ periodI
       </div>
 
       {/* Attendance table */}
-      <div className="rounded-lg border bg-card">
+      <div className="rounded-xs border bg-card">
         <div className="border-b px-5 py-3">
           <h2 className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
             Presences ({attendances.length} employe(s))

@@ -31,13 +31,13 @@ export default function EmployeesPage() {
           </p>
         </div>
         <div className="flex items-center gap-2">
-          <button className="inline-flex items-center gap-2 rounded-md border bg-card px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted">
+          <button className="inline-flex items-center gap-2 rounded-xs border bg-card px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted">
             <Download className="h-4 w-4" />
             Exporter
           </button>
           <Link
             href="/human-resources/employees/new"
-            className="inline-flex items-center gap-2 rounded-md bg-accent px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-accent/90"
+            className="inline-flex items-center gap-2 rounded-xs bg-accent px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-accent/90"
           >
             <Plus className="h-4 w-4" />
             Nouvel employe
@@ -53,12 +53,12 @@ export default function EmployeesPage() {
           placeholder="Rechercher par nom, code ou fonction..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="w-full rounded-md border bg-card py-2 pl-10 pr-4 text-sm outline-none transition-colors focus:border-accent focus:ring-1 focus:ring-accent/30"
+          className="w-full rounded-xs border bg-card py-2 pl-10 pr-4 text-sm outline-none transition-colors focus:border-accent focus:ring-1 focus:ring-accent/30"
         />
       </div>
 
       {/* Table */}
-      <div className="overflow-hidden rounded-lg border bg-card">
+      <div className="overflow-hidden rounded-xs border bg-card">
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b bg-muted/50">

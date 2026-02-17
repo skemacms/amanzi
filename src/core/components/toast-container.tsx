@@ -23,7 +23,7 @@ export function ToastContainer() {
         return (
           <div
             key={toast.id}
-            className={`pointer-events-auto flex items-start gap-3 rounded-lg border px-4 py-3 shadow-lg ${style.bg} animate-in slide-in-from-right-5 fade-in min-w-[320px] max-w-[420px]`}
+            className={`pointer-events-auto flex items-start gap-3 rounded-xs border px-4 py-3 shadow-lg ${style.bg} animate-in slide-in-from-right-5 fade-in min-w-[320px] max-w-[420px]`}
           >
             <Icon className={`mt-0.5 h-5 w-5 shrink-0 ${style.iconColor}`} />
             <div className="flex-1 min-w-0">

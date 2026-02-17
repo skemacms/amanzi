@@ -30,7 +30,7 @@ export default function ParametresPage() {
         </div>
         <button
           onClick={handleSave}
-          className="inline-flex items-center gap-2 rounded-md bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-accent/90"
+          className="inline-flex items-center gap-2 rounded-xs bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-accent/90"
         >
           <Save className="h-4 w-4" />
           Enregistrer
@@ -39,7 +39,7 @@ export default function ParametresPage() {
 
       <div className="grid max-w-5xl grid-cols-1 gap-4 lg:grid-cols-2">
         {/* General info */}
-        <div className="rounded-lg border bg-card p-5">
+        <div className="rounded-xs border bg-card p-5">
           <h2 className="mb-3 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
             Informations generales
           </h2>
@@ -76,7 +76,7 @@ export default function ParametresPage() {
         </div>
 
         {/* CNSS */}
-        <div className="rounded-lg border bg-card p-5">
+        <div className="rounded-xs border bg-card p-5">
           <h2 className="mb-3 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
             CNSS
           </h2>
@@ -109,7 +109,7 @@ export default function ParametresPage() {
         </div>
 
         {/* ITS/TOL */}
-        <div className="rounded-lg border bg-card p-5">
+        <div className="rounded-xs border bg-card p-5">
           <h2 className="mb-3 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
             ITS / TOL
           </h2>
@@ -142,7 +142,7 @@ export default function ParametresPage() {
         </div>
 
         {/* TUS */}
-        <div className="rounded-lg border bg-card p-5">
+        <div className="rounded-xs border bg-card p-5">
           <h2 className="mb-3 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
             TUS
           </h2>
@@ -163,7 +163,7 @@ export default function ParametresPage() {
         </div>
 
         {/* Seniority */}
-        <div className="rounded-lg border bg-card p-5 lg:col-span-2">
+        <div className="rounded-xs border bg-card p-5 lg:col-span-2">
           <h2 className="mb-3 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
             Anciennete
           </h2>
@@ -196,7 +196,7 @@ export default function ParametresPage() {
         </div>
 
         {/* Reminders */}
-        <div className="rounded-lg border bg-card p-5 lg:col-span-2">
+        <div className="rounded-xs border bg-card p-5 lg:col-span-2">
           <h2 className="mb-3 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
             Rappels automatiques
           </h2>

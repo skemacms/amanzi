@@ -43,7 +43,7 @@ export default function PayslipDetailPage({ params }: { params: Promise<{ id: st
             {period ? `${MONTH_NAMES[period.month]} ${period.year}` : payslip.payrollPeriodId}
           </p>
         </div>
-        <button className="inline-flex items-center gap-2 rounded-md border bg-card px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted">
+        <button className="inline-flex items-center gap-2 rounded-xs border bg-card px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted">
           <Download className="h-4 w-4" />
           Telecharger PDF
         </button>
@@ -51,26 +51,26 @@ export default function PayslipDetailPage({ params }: { params: Promise<{ id: st
 
       {/* Summary cards */}
       <div className="mb-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
-        <div className="rounded-lg border bg-card p-4">
+        <div className="rounded-xs border bg-card p-4">
           <p className="text-xs text-muted-foreground">Brut imposable</p>
           <p className="mt-1 text-lg font-bold text-foreground">{formatCurrency(payslip.grossTaxable)}</p>
         </div>
-        <div className="rounded-lg border bg-card p-4">
+        <div className="rounded-xs border bg-card p-4">
           <p className="text-xs text-muted-foreground">Retenues salarie</p>
           <p className="mt-1 text-lg font-bold text-red-600">{formatCurrency(payslip.totalEmployeeDeductions)}</p>
         </div>
-        <div className="rounded-lg border bg-card p-4">
+        <div className="rounded-xs border bg-card p-4">
           <p className="text-xs text-muted-foreground">Charges patronales</p>
           <p className="mt-1 text-lg font-bold text-amber-600">{formatCurrency(payslip.totalEmployerCharges)}</p>
         </div>
-        <div className="rounded-lg border bg-card p-4">
+        <div className="rounded-xs border bg-card p-4">
           <p className="text-xs text-muted-foreground">Net a payer</p>
           <p className="mt-1 text-lg font-bold text-emerald-700">{formatCurrency(payslip.netPay)}</p>
         </div>
       </div>
 
       {/* Line details */}
-      <div className="overflow-hidden rounded-lg border bg-card">
+      <div className="overflow-hidden rounded-xs border bg-card">
         <div className="border-b px-5 py-3">
           <h2 className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
             Detail des lignes
@@ -92,7 +92,7 @@ export default function PayslipDetailPage({ params }: { params: Promise<{ id: st
               {payslip.lines.map((line) => (
                 <tr key={line.id} className="border-b last:border-b-0 hover:bg-muted/30">
                   <td className="px-4 py-3">
-                    <span className="rounded-md bg-muted px-2 py-0.5 text-[10px] font-medium text-muted-foreground">
+                    <span className="rounded-xs bg-muted px-2 py-0.5 text-[10px] font-medium text-muted-foreground">
                       {PAYSLIP_SECTION_LABELS[line.section]}
                     </span>
                   </td>

@@ -47,7 +47,7 @@ export default function EmployeeDetailPage({ params }: { params: Promise<{ id: s
             </span>
           </div>
         </div>
-        <button className="inline-flex items-center gap-2 rounded-md border bg-card px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted">
+        <button className="inline-flex items-center gap-2 rounded-xs border bg-card px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted">
           <Pencil className="h-4 w-4" />
           Modifier
         </button>
@@ -56,7 +56,7 @@ export default function EmployeeDetailPage({ params }: { params: Promise<{ id: s
       {/* Info grid */}
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         {/* Personal */}
-        <div className="rounded-lg border bg-card p-5">
+        <div className="rounded-xs border bg-card p-5">
           <h2 className="mb-3 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
             Informations personnelles
           </h2>
@@ -94,7 +94,7 @@ export default function EmployeeDetailPage({ params }: { params: Promise<{ id: s
         </div>
 
         {/* Professional */}
-        <div className="rounded-lg border bg-card p-5">
+        <div className="rounded-xs border bg-card p-5">
           <h2 className="mb-3 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
             Informations professionnelles
           </h2>
@@ -128,7 +128,7 @@ export default function EmployeeDetailPage({ params }: { params: Promise<{ id: s
         </div>
 
         {/* Compensation */}
-        <div className="rounded-lg border bg-card p-5">
+        <div className="rounded-xs border bg-card p-5">
           <h2 className="mb-3 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
             Remuneration
           </h2>
@@ -145,18 +145,18 @@ export default function EmployeeDetailPage({ params }: { params: Promise<{ id: s
         </div>
 
         {/* Primes */}
-        <div className="rounded-lg border bg-card p-5">
+        <div className="rounded-xs border bg-card p-5">
           <h2 className="mb-3 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
             Primes assignees
           </h2>
           {employee.employeePrimes && employee.employeePrimes.length > 0 ? (
             <div className="space-y-2">
               {employee.employeePrimes.map((ep) => (
-                <div key={ep.id} className="flex items-center justify-between rounded-md bg-muted px-3 py-2 text-sm">
+                  <div key={ep.id} className="flex items-center justify-between rounded-xs bg-muted px-3 py-2 text-sm">
                   <div className="flex items-center gap-2">
                     <span className="font-medium text-foreground">{ep.primeDefinition?.name ?? ep.primeDefinitionId}</span>
                     {ep.primeDefinition && (
-                      <span className={`rounded-full px-2 py-0.5 text-[10px] font-medium ${ep.primeDefinition.isTaxable ? 'bg-amber-50 text-amber-700' : 'bg-teal-50 text-teal-700'}`}>
+                      <span className={`rounded-xs px-2 py-0.5 text-[10px] font-medium ${ep.primeDefinition.isTaxable ? 'bg-amber-50 text-amber-700' : 'bg-teal-50 text-teal-700'}`}>
                         {ep.primeDefinition.isTaxable ? 'Imposable' : 'Non imposable'}
                       </span>
                     )}
@@ -172,7 +172,7 @@ export default function EmployeeDetailPage({ params }: { params: Promise<{ id: s
 
         {/* Bank details */}
         {employee.bankName && (
-          <div className="rounded-lg border bg-card p-5 lg:col-span-2">
+          <div className="rounded-xs border bg-card p-5 lg:col-span-2">
             <h2 className="mb-3 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
               Coordonnees bancaires
             </h2>
