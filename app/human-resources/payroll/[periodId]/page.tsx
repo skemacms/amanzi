@@ -6,10 +6,68 @@ import { ArrowLeft, Calculator, CheckCircle2 } from 'lucide-react';
 import { mockPayrollPeriods, mockAttendances } from '@/features/human-resources/mock/data';
 import { PAYROLL_STATUS_LABELS, PayrollPeriodStatus } from '@/core/types/enums';
 import { formatDate } from '@/core/lib/utils';
+import { DataTable, type ColumnDef } from '@/core/components/ui/data-table';
 
 const MONTH_NAMES = [
   '', 'Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin',
   'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre',
+];
+
+type AttendanceRow = (typeof mockAttendances)[number];
+
+const attendanceCols: ColumnDef<AttendanceRow>[] = [
+  {
+    id: 'code',
+    header: 'Code',
+    accessorFn: (row) => (
+      <span className="font-mono text-xs text-muted-foreground">{row.employee?.employeeCode ?? '\u2014'}</span>
+    ),
+    rawValue: (row) => row.employee?.employeeCode ?? '',
+    className: 'w-24',
+  },
+  {
+    id: 'employee',
+    header: 'Employe',
+    accessorFn: (row) => (
+      <span className="font-medium text-foreground">
+        {row.employee ? `${row.employee.lastName} ${row.employee.firstName}` : row.employeeId}
+      </span>
+    ),
+    rawValue: (row) =>
+      row.employee ? `${row.employee.lastName} ${row.employee.firstName}` : row.employeeId,
+  },
+  {
+    id: 'worked',
+    header: 'Jours travailles',
+    accessorFn: (row) => <span className="text-foreground">{row.workedValue}</span>,
+    rawValue: (row) => row.workedValue,
+    align: 'right',
+  },
+  {
+    id: 'norm',
+    header: 'Norme',
+    accessorFn: (row) => <span className="text-foreground">{row.normValue}</span>,
+    rawValue: (row) => row.normValue,
+    align: 'right',
+  },
+  {
+    id: 'absences',
+    header: 'Absences',
+    accessorFn: (row) =>
+      row.absenceDays > 0 ? (
+        <span className="font-medium text-red-600">{row.absenceDays}</span>
+      ) : (
+        <span className="text-muted-foreground">0</span>
+      ),
+    rawValue: (row) => row.absenceDays,
+    align: 'right',
+  },
+  {
+    id: 'absenceReason',
+    header: 'Motif absence',
+    accessorFn: (row) => <span className="text-muted-foreground">{row.absenceReason ?? '\u2014'}</span>,
+    rawValue: (row) => row.absenceReason ?? '',
+  },
 ];
 
 export default function PeriodDetailPage({ params }: { params: Promise<{ periodId: string }> }) {
@@ -39,7 +97,7 @@ export default function PeriodDetailPage({ params }: { params: Promise<{ periodI
             {MONTH_NAMES[period.month]} {period.year}
           </h1>
           <p className="mt-0.5 text-sm text-muted-foreground">
-            {formatDate(period.startDate)} \u2014 {formatDate(period.endDate)}
+            {formatDate(period.startDate)} {'\u2014'} {formatDate(period.endDate)}
           </p>
         </div>
         <div className="flex items-center gap-3">
@@ -66,52 +124,18 @@ export default function PeriodDetailPage({ params }: { params: Promise<{ periodI
         </div>
       </div>
 
-      {/* Attendance table */}
-      <div className="rounded-xs border bg-card">
-        <div className="border-b px-5 py-3">
-          <h2 className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
-            Presences ({attendances.length} employe(s))
-          </h2>
-        </div>
-        <table className="w-full text-sm">
-          <thead>
-            <tr className="border-b bg-muted/50">
-              <th className="px-4 py-3 text-left text-xs font-medium text-muted-foreground">Code</th>
-              <th className="px-4 py-3 text-left text-xs font-medium text-muted-foreground">Employe</th>
-              <th className="px-4 py-3 text-right text-xs font-medium text-muted-foreground">Jours travailles</th>
-              <th className="px-4 py-3 text-right text-xs font-medium text-muted-foreground">Norme</th>
-              <th className="px-4 py-3 text-right text-xs font-medium text-muted-foreground">Absences</th>
-              <th className="px-4 py-3 text-left text-xs font-medium text-muted-foreground">Motif absence</th>
-            </tr>
-          </thead>
-          <tbody>
-            {attendances.map((att) => (
-              <tr key={att.id} className="border-b last:border-b-0 hover:bg-muted/30">
-                <td className="px-4 py-3 font-mono text-xs text-muted-foreground">{att.employee?.employeeCode ?? '\u2014'}</td>
-                <td className="px-4 py-3 font-medium text-foreground">
-                  {att.employee ? `${att.employee.lastName} ${att.employee.firstName}` : att.employeeId}
-                </td>
-                <td className="px-4 py-3 text-right text-foreground">{att.workedValue}</td>
-                <td className="px-4 py-3 text-right text-foreground">{att.normValue}</td>
-                <td className="px-4 py-3 text-right">
-                  {att.absenceDays > 0 ? (
-                    <span className="font-medium text-red-600">{att.absenceDays}</span>
-                  ) : (
-                    <span className="text-muted-foreground">0</span>
-                  )}
-                </td>
-                <td className="px-4 py-3 text-muted-foreground">{att.absenceReason ?? '\u2014'}</td>
-              </tr>
-            ))}
-            {attendances.length === 0 && (
-              <tr>
-                <td colSpan={6} className="px-4 py-8 text-center text-muted-foreground">
-                  Aucune presence enregistree pour cette periode.
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
+      {/* Attendance DataTable */}
+      <div>
+        <h2 className="mb-3 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
+          Presences ({attendances.length} employe(s))
+        </h2>
+        <DataTable
+          data={attendances}
+          columns={attendanceCols}
+          getRowId={(row) => row.id}
+          searchPlaceholder="Rechercher un employe..."
+          emptyMessage="Aucune presence enregistree pour cette periode."
+        />
       </div>
     </div>
   );

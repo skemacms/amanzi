@@ -4,6 +4,72 @@ import { useState } from 'react';
 import { Plus, Pencil, Trash2 } from 'lucide-react';
 import { mockPrimeDefinitions } from '@/features/human-resources/mock/data';
 import type { PrimeDefinition } from '@/features/human-resources/types/prime-definition';
+import { DataTable, type ColumnDef } from '@/core/components/ui/data-table';
+
+const columns: ColumnDef<PrimeDefinition>[] = [
+  {
+    id: 'name',
+    header: 'Nom',
+    accessorFn: (row) => <span className="font-medium text-foreground">{row.name}</span>,
+    rawValue: (row) => row.name,
+  },
+  {
+    id: 'taxable',
+    header: 'Imposable',
+    accessorFn: (row) => (
+      <span className={`rounded-xs px-2.5 py-0.5 text-[10px] font-medium ${
+        row.isTaxable ? 'bg-amber-50 text-amber-700' : 'bg-teal-50 text-teal-700'
+      }`}>
+        {row.isTaxable ? 'Oui' : 'Non'}
+      </span>
+    ),
+    rawValue: (row) => (row.isTaxable ? 'taxable' : 'non-taxable'),
+    align: 'center',
+    filterOptions: [
+      { label: 'Imposable', value: 'taxable' },
+      { label: 'Non imposable', value: 'non-taxable' },
+    ],
+  },
+  {
+    id: 'status',
+    header: 'Statut',
+    accessorFn: (row) => (
+      <span className={`rounded-xs px-2.5 py-0.5 text-[10px] font-medium ${
+        row.isActive ? 'bg-emerald-50 text-emerald-700' : 'bg-muted text-muted-foreground'
+      }`}>
+        {row.isActive ? 'Active' : 'Inactive'}
+      </span>
+    ),
+    rawValue: (row) => (row.isActive ? 'active' : 'inactive'),
+    align: 'center',
+    filterOptions: [
+      { label: 'Active', value: 'active' },
+      { label: 'Inactive', value: 'inactive' },
+    ],
+  },
+  {
+    id: 'order',
+    header: 'Ordre',
+    accessorFn: (row) => <span className="text-muted-foreground">{row.sortOrder}</span>,
+    rawValue: (row) => row.sortOrder,
+    align: 'center',
+  },
+  {
+    id: 'actions',
+    header: 'Actions',
+    accessorFn: () => (
+      <div className="inline-flex gap-1">
+        <button className="rounded-xs p-1.5 text-muted-foreground hover:bg-muted hover:text-foreground" title="Modifier">
+          <Pencil className="h-3.5 w-3.5" />
+        </button>
+        <button className="rounded-xs p-1.5 text-muted-foreground hover:bg-red-50 hover:text-red-600" title="Supprimer">
+          <Trash2 className="h-3.5 w-3.5" />
+        </button>
+      </div>
+    ),
+    align: 'right',
+  },
+];
 
 export default function PrimesPage() {
   const [primes] = useState<PrimeDefinition[]>(mockPrimeDefinitions);
@@ -23,51 +89,13 @@ export default function PrimesPage() {
         </button>
       </div>
 
-      <div className="overflow-hidden rounded-xs border bg-card">
-        <table className="w-full text-sm">
-          <thead>
-            <tr className="border-b bg-muted/50">
-              <th className="px-4 py-3 text-left text-xs font-medium text-muted-foreground">Nom</th>
-              <th className="px-4 py-3 text-center text-xs font-medium text-muted-foreground">Imposable</th>
-              <th className="px-4 py-3 text-center text-xs font-medium text-muted-foreground">Statut</th>
-              <th className="px-4 py-3 text-center text-xs font-medium text-muted-foreground">Ordre</th>
-              <th className="px-4 py-3 text-right text-xs font-medium text-muted-foreground">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {primes.map((prime) => (
-              <tr key={prime.id} className="border-b last:border-b-0 hover:bg-muted/30">
-                <td className="px-4 py-3 font-medium text-foreground">{prime.name}</td>
-                <td className="px-4 py-3 text-center">
-                  <span className={`rounded-xs px-2.5 py-0.5 text-[10px] font-medium ${
-                    prime.isTaxable ? 'bg-amber-50 text-amber-700' : 'bg-teal-50 text-teal-700'
-                  }`}>
-                    {prime.isTaxable ? 'Oui' : 'Non'}
-                  </span>
-                </td>
-                <td className="px-4 py-3 text-center">
-                  <span className={`rounded-xs px-2.5 py-0.5 text-[10px] font-medium ${
-                    prime.isActive ? 'bg-emerald-50 text-emerald-700' : 'bg-muted text-muted-foreground'
-                  }`}>
-                    {prime.isActive ? 'Active' : 'Inactive'}
-                  </span>
-                </td>
-                <td className="px-4 py-3 text-center text-muted-foreground">{prime.sortOrder}</td>
-                <td className="px-4 py-3 text-right">
-                  <div className="inline-flex gap-1">
-                    <button className="rounded-xs p-1.5 text-muted-foreground hover:bg-muted hover:text-foreground" title="Modifier">
-                      <Pencil className="h-3.5 w-3.5" />
-                    </button>
-                    <button className="rounded-xs p-1.5 text-muted-foreground hover:bg-red-50 hover:text-red-600" title="Supprimer">
-                      <Trash2 className="h-3.5 w-3.5" />
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <DataTable
+        data={primes}
+        columns={columns}
+        getRowId={(row) => row.id}
+        searchPlaceholder="Rechercher une prime..."
+        emptyMessage="Aucune prime definie."
+      />
     </div>
   );
 }

@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { Search, Command } from 'lucide-react';
 import { AppSwitcher } from './app-switcher';
 import { NotificationPanel } from './notification-panel';
 import { MessageButton, TaskButton } from './navbar-actions';
@@ -41,22 +40,6 @@ export function MainNavbar({ currentApp }: MainNavbarProps) {
               </span>
             </>
           )}
-        </div>
-
-        {/* Center - Search */}
-        <div className="hidden flex-1 justify-center px-6 md:flex">
-          <div className="relative w-full max-w-sm">
-            <Search className="absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-navbar-foreground/35" />
-            <input
-              type="text"
-              placeholder="Rechercher..."
-              className="w-full rounded-xs border border-navbar-foreground/10 bg-navbar-foreground/8 py-1.5 pl-8 pr-10 text-xs text-navbar-foreground placeholder:text-navbar-foreground/35 outline-none transition-all focus:border-navbar-foreground/20 focus:bg-navbar-foreground/12"
-            />
-            <div className="absolute right-2.5 top-1/2 flex -translate-y-1/2 items-center gap-0.5 text-navbar-foreground/30">
-              <Command className="h-3 w-3" />
-              <span className="text-[10px] font-medium">K</span>
-            </div>
-          </div>
         </div>
 
         {/* Right section */}
