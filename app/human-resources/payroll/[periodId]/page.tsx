@@ -8,8 +8,8 @@ import { PAYROLL_STATUS_LABELS, PayrollPeriodStatus } from '@/core/types/enums';
 import { formatDate } from '@/core/lib/utils';
 
 const MONTH_NAMES = [
-  '', 'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
-  'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre',
+  '', 'Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin',
+  'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre',
 ];
 
 export default function PeriodDetailPage({ params }: { params: Promise<{ periodId: string }> }) {
@@ -19,7 +19,7 @@ export default function PeriodDetailPage({ params }: { params: Promise<{ periodI
   if (!period) {
     return (
       <div className="flex h-full items-center justify-center p-8">
-        <p className="text-stone-400">Période introuvable.</p>
+        <p className="text-muted-foreground">Periode introuvable.</p>
       </div>
     );
   }
@@ -27,38 +27,38 @@ export default function PeriodDetailPage({ params }: { params: Promise<{ periodI
   const attendances = mockAttendances.filter((a) => a.payrollPeriodId === periodId);
 
   return (
-    <div className="p-8">
-      <Link href="/human-resources/payroll" className="mb-6 inline-flex items-center gap-2 text-sm text-stone-400 hover:text-stone-700">
+    <div className="px-6 py-6">
+      <Link href="/human-resources/payroll" className="mb-4 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground">
         <ArrowLeft className="h-4 w-4" />
-        Retour aux périodes
+        Retour aux periodes
       </Link>
 
-      <div className="mb-8 flex items-start justify-between">
+      <div className="mb-6 flex items-start justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-stone-900">
+          <h1 className="text-xl font-bold text-foreground">
             {MONTH_NAMES[period.month]} {period.year}
           </h1>
-          <p className="mt-1 text-sm text-stone-500">
-            {formatDate(period.startDate)} — {formatDate(period.endDate)}
+          <p className="mt-0.5 text-sm text-muted-foreground">
+            {formatDate(period.startDate)} \u2014 {formatDate(period.endDate)}
           </p>
         </div>
         <div className="flex items-center gap-3">
           <span className={`rounded-full px-3 py-1 text-xs font-medium ${
-            period.status === PayrollPeriodStatus.DRAFT ? 'bg-stone-100 text-stone-600' :
-            period.status === PayrollPeriodStatus.CALCULATED ? 'bg-teal-50 text-teal-700' :
-            period.status === PayrollPeriodStatus.VALIDATED ? 'bg-green-50 text-green-700' :
-            'bg-stone-200 text-stone-500'
+            period.status === PayrollPeriodStatus.DRAFT ? 'bg-muted text-muted-foreground' :
+            period.status === PayrollPeriodStatus.CALCULATED ? 'bg-sky-50 text-sky-700' :
+            period.status === PayrollPeriodStatus.VALIDATED ? 'bg-emerald-50 text-emerald-700' :
+            'bg-muted text-muted-foreground'
           }`}>
             {PAYROLL_STATUS_LABELS[period.status]}
           </span>
           {period.status === PayrollPeriodStatus.DRAFT && (
-            <button className="inline-flex items-center gap-2 rounded-xl bg-teal-600 px-4 py-2 text-sm font-medium text-white hover:bg-teal-700">
+            <button className="inline-flex items-center gap-2 rounded-md bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-accent/90">
               <Calculator className="h-4 w-4" />
               Lancer le calcul
             </button>
           )}
           {period.status === PayrollPeriodStatus.CALCULATED && (
-            <button className="inline-flex items-center gap-2 rounded-xl bg-green-600 px-4 py-2 text-sm font-medium text-white hover:bg-green-700">
+            <button className="inline-flex items-center gap-2 rounded-md bg-emerald-600 px-4 py-2 text-sm font-medium text-white hover:bg-emerald-700">
               <CheckCircle2 className="h-4 w-4" />
               Valider la paie
             </button>
@@ -66,47 +66,47 @@ export default function PeriodDetailPage({ params }: { params: Promise<{ periodI
         </div>
       </div>
 
-      {/* Tableau des présences */}
-      <div className="rounded-2xl bg-white">
-        <div className="px-6 py-4">
-          <h2 className="text-[10px] font-semibold uppercase tracking-widest text-stone-400">
-            Présences ({attendances.length} employé(s))
+      {/* Attendance table */}
+      <div className="rounded-lg border bg-card">
+        <div className="border-b px-5 py-3">
+          <h2 className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
+            Presences ({attendances.length} employe(s))
           </h2>
         </div>
         <table className="w-full text-sm">
           <thead>
-            <tr className="bg-stone-100">
-              <th className="px-4 py-3 text-left font-medium text-stone-500">Code</th>
-              <th className="px-4 py-3 text-left font-medium text-stone-500">Employé</th>
-              <th className="px-4 py-3 text-right font-medium text-stone-500">Jours travaillés</th>
-              <th className="px-4 py-3 text-right font-medium text-stone-500">Norme</th>
-              <th className="px-4 py-3 text-right font-medium text-stone-500">Absences</th>
-              <th className="px-4 py-3 text-left font-medium text-stone-500">Motif absence</th>
+            <tr className="border-b bg-muted/50">
+              <th className="px-4 py-3 text-left text-xs font-medium text-muted-foreground">Code</th>
+              <th className="px-4 py-3 text-left text-xs font-medium text-muted-foreground">Employe</th>
+              <th className="px-4 py-3 text-right text-xs font-medium text-muted-foreground">Jours travailles</th>
+              <th className="px-4 py-3 text-right text-xs font-medium text-muted-foreground">Norme</th>
+              <th className="px-4 py-3 text-right text-xs font-medium text-muted-foreground">Absences</th>
+              <th className="px-4 py-3 text-left text-xs font-medium text-muted-foreground">Motif absence</th>
             </tr>
           </thead>
           <tbody>
             {attendances.map((att) => (
-              <tr key={att.id} className="hover:bg-stone-50">
-                <td className="px-4 py-3 font-mono text-xs">{att.employee?.employeeCode ?? '—'}</td>
-                <td className="px-4 py-3 font-medium">
+              <tr key={att.id} className="border-b last:border-b-0 hover:bg-muted/30">
+                <td className="px-4 py-3 font-mono text-xs text-muted-foreground">{att.employee?.employeeCode ?? '\u2014'}</td>
+                <td className="px-4 py-3 font-medium text-foreground">
                   {att.employee ? `${att.employee.lastName} ${att.employee.firstName}` : att.employeeId}
                 </td>
-                <td className="px-4 py-3 text-right">{att.workedValue}</td>
-                <td className="px-4 py-3 text-right">{att.normValue}</td>
+                <td className="px-4 py-3 text-right text-foreground">{att.workedValue}</td>
+                <td className="px-4 py-3 text-right text-foreground">{att.normValue}</td>
                 <td className="px-4 py-3 text-right">
                   {att.absenceDays > 0 ? (
                     <span className="font-medium text-red-600">{att.absenceDays}</span>
                   ) : (
-                    <span className="text-stone-400">0</span>
+                    <span className="text-muted-foreground">0</span>
                   )}
                 </td>
-                <td className="px-4 py-3 text-stone-500">{att.absenceReason ?? '—'}</td>
+                <td className="px-4 py-3 text-muted-foreground">{att.absenceReason ?? '\u2014'}</td>
               </tr>
             ))}
             {attendances.length === 0 && (
               <tr>
-                <td colSpan={6} className="px-4 py-8 text-center text-stone-400">
-                  Aucune présence enregistrée pour cette période.
+                <td colSpan={6} className="px-4 py-8 text-center text-muted-foreground">
+                  Aucune presence enregistree pour cette periode.
                 </td>
               </tr>
             )}

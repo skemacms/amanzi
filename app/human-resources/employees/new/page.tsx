@@ -4,11 +4,13 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Save } from 'lucide-react';
 import { MaritalStatus, Zone } from '@/core/types/enums';
+import { useToast } from '@/core/stores/toast-store';
 
-const inputClass = 'w-full rounded-xl bg-stone-50 px-3 py-2 text-sm outline-none transition-shadow focus:ring-2 focus:ring-teal-600/20 focus:bg-white';
-const labelClass = 'mb-1 block text-sm text-stone-500';
+const inputClass = 'w-full rounded-md border bg-background px-3 py-2 text-sm outline-none transition-colors focus:border-accent focus:ring-1 focus:ring-accent/30';
+const labelClass = 'mb-1.5 block text-xs font-medium text-muted-foreground';
 
 export default function NewEmployeePage() {
+  const { addToast } = useToast();
   const [form, setForm] = useState({
     employeeCode: '',
     firstName: '',
@@ -35,8 +37,11 @@ export default function NewEmployeePage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Création employé :', form);
-    alert('Employé créé (mock)');
+    addToast({
+      title: 'Employe cree',
+      description: `${form.firstName} ${form.lastName} a ete ajoute avec succes.`,
+      variant: 'success',
+    });
   };
 
   const update = (field: string, value: string | number) => {
@@ -44,25 +49,25 @@ export default function NewEmployeePage() {
   };
 
   return (
-    <div className="p-8">
-      <Link href="/human-resources/employees" className="mb-6 inline-flex items-center gap-2 text-sm text-stone-400 hover:text-stone-700">
+    <div className="px-6 py-6">
+      <Link href="/human-resources/employees" className="mb-4 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground">
         <ArrowLeft className="h-4 w-4" />
-        Retour à la liste
+        Retour a la liste
       </Link>
 
-      <h1 className="mb-8 text-2xl font-bold text-stone-900">Nouvel employé</h1>
+      <h1 className="mb-6 text-xl font-bold text-foreground">Nouvel employe</h1>
 
-      <form onSubmit={handleSubmit} className="grid max-w-4xl grid-cols-1 gap-5 lg:grid-cols-2">
-        {/* Identité */}
-        <div className="rounded-2xl bg-white p-6 lg:col-span-2">
-          <h2 className="mb-4 text-[10px] font-semibold uppercase tracking-widest text-stone-400">Identité</h2>
+      <form onSubmit={handleSubmit} className="grid max-w-4xl grid-cols-1 gap-4 lg:grid-cols-2">
+        {/* Identity */}
+        <div className="rounded-lg border bg-card p-5 lg:col-span-2">
+          <h2 className="mb-3 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">Identite</h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
             <label className="block">
-              <span className={labelClass}>Code employé *</span>
+              <span className={labelClass}>Code employe *</span>
               <input required value={form.employeeCode} onChange={(e) => update('employeeCode', e.target.value)} className={inputClass} />
             </label>
             <label className="block">
-              <span className={labelClass}>Prénom *</span>
+              <span className={labelClass}>Prenom *</span>
               <input required value={form.firstName} onChange={(e) => update('firstName', e.target.value)} className={inputClass} />
             </label>
             <label className="block">
@@ -80,29 +85,29 @@ export default function NewEmployeePage() {
             <label className="block">
               <span className={labelClass}>Situation familiale</span>
               <select value={form.maritalStatus} onChange={(e) => update('maritalStatus', e.target.value)} className={inputClass}>
-                <option value={MaritalStatus.SINGLE}>Célibataire</option>
-                <option value={MaritalStatus.MARRIED}>Marié(e)</option>
-                <option value={MaritalStatus.DIVORCED}>Divorcé(e)</option>
+                <option value={MaritalStatus.SINGLE}>Celibataire</option>
+                <option value={MaritalStatus.MARRIED}>Marie(e)</option>
+                <option value={MaritalStatus.DIVORCED}>Divorce(e)</option>
                 <option value={MaritalStatus.WIDOWED}>Veuf/Veuve</option>
               </select>
             </label>
             <label className="block">
-              <span className={labelClass}>Enfants à charge</span>
+              <span className={labelClass}>Enfants a charge</span>
               <input type="number" min={0} value={form.childrenCount} onChange={(e) => update('childrenCount', Number(e.target.value))} className={inputClass} />
             </label>
             <label className="block">
-              <span className={labelClass}>Téléphone</span>
+              <span className={labelClass}>Telephone</span>
               <input value={form.phone} onChange={(e) => update('phone', e.target.value)} className={inputClass} />
             </label>
           </div>
         </div>
 
-        {/* Professionnel */}
-        <div className="rounded-2xl bg-white p-6 lg:col-span-2">
-          <h2 className="mb-4 text-[10px] font-semibold uppercase tracking-widest text-stone-400">Professionnel</h2>
+        {/* Professional */}
+        <div className="rounded-lg border bg-card p-5 lg:col-span-2">
+          <h2 className="mb-3 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">Professionnel</h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
             <label className="block">
-              <span className={labelClass}>Date d&apos;embauche *</span>
+              <span className={labelClass}>Date d{"'"}embauche *</span>
               <input required type="date" value={form.hireDate} onChange={(e) => update('hireDate', e.target.value)} className={inputClass} />
             </label>
             <label className="block">
@@ -110,30 +115,30 @@ export default function NewEmployeePage() {
               <input value={form.functionTitle} onChange={(e) => update('functionTitle', e.target.value)} className={inputClass} />
             </label>
             <label className="block">
-              <span className={labelClass}>Catégorie</span>
+              <span className={labelClass}>Categorie</span>
               <input value={form.category} onChange={(e) => update('category', e.target.value)} className={inputClass} />
             </label>
             <label className="block">
-              <span className={labelClass}>Échelon</span>
+              <span className={labelClass}>Echelon</span>
               <input value={form.echelon} onChange={(e) => update('echelon', e.target.value)} className={inputClass} />
             </label>
             <label className="block">
-              <span className={labelClass}>N° CNSS</span>
+              <span className={labelClass}>N CNSS</span>
               <input value={form.cnssNumber} onChange={(e) => update('cnssNumber', e.target.value)} className={inputClass} />
             </label>
             <label className="block">
               <span className={labelClass}>Zone</span>
               <select value={form.zone} onChange={(e) => update('zone', e.target.value)} className={inputClass}>
                 <option value={Zone.DOWNTOWN}>Centre-ville</option>
-                <option value={Zone.SUBURBAN}>Périphérie</option>
+                <option value={Zone.SUBURBAN}>Peripherie</option>
               </select>
             </label>
           </div>
         </div>
 
-        {/* Rémunération */}
-        <div className="rounded-2xl bg-white p-6 lg:col-span-2">
-          <h2 className="mb-4 text-[10px] font-semibold uppercase tracking-widest text-stone-400">Rémunération</h2>
+        {/* Compensation */}
+        <div className="rounded-lg border bg-card p-5 lg:col-span-2">
+          <h2 className="mb-3 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">Remuneration</h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <label className="block">
               <span className={labelClass}>Salaire de base (FCFA) *</span>
@@ -146,9 +151,9 @@ export default function NewEmployeePage() {
           </div>
         </div>
 
-        {/* Bouton */}
+        {/* Submit */}
         <div className="lg:col-span-2">
-          <button type="submit" className="inline-flex items-center gap-2 rounded-xl bg-teal-600 px-6 py-2.5 text-sm font-medium text-white transition-colors hover:bg-teal-700">
+          <button type="submit" className="inline-flex items-center gap-2 rounded-md bg-accent px-6 py-2 text-sm font-medium text-white transition-colors hover:bg-accent/90">
             <Save className="h-4 w-4" />
             Enregistrer
           </button>

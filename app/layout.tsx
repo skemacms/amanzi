@@ -1,6 +1,12 @@
-import type { Metadata } from 'next';
-import { JetBrains_Mono } from 'next/font/google';
+import type { Metadata, Viewport } from 'next';
+import { Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
+import { Providers } from '@/core/components/providers';
+
+const inter = Inter({
+  variable: '--font-inter',
+  subsets: ['latin'],
+});
 
 const jetbrains = JetBrains_Mono({
   variable: '--font-jetbrains',
@@ -8,8 +14,14 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Amanzi',
-  description: 'Plateforme de gestion d\'entreprise',
+  title: 'Amanzi - Plateforme de gestion',
+  description: 'Plateforme de gestion d\'entreprise moderne et intuitive',
+};
+
+export const viewport: Viewport = {
+  themeColor: '#1a1d21',
+  width: 'device-width',
+  initialScale: 1,
 };
 
 export default function RootLayout({
@@ -19,8 +31,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body className={`${jetbrains.variable} antialiased`}>
-        {children}
+      <body className={`${inter.variable} ${jetbrains.variable} font-sans antialiased`}>
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );
