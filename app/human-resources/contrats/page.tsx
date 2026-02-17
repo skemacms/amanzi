@@ -19,7 +19,7 @@ const typeColors: Record<string, string> = {
   CDI: 'bg-teal-50 text-teal-700',
   CDD: 'bg-sky-50 text-sky-700',
   Stage: 'bg-amber-50 text-amber-700',
-  Interim: 'bg-indigo-50 text-indigo-700',
+  Interim: 'bg-cyan-50 text-cyan-700',
 };
 
 function formatCurrency(val: number) {

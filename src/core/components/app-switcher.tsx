@@ -26,7 +26,7 @@ const apps: AppItem[] = [
   { name: 'Comptabilite', href: '/accounting', icon: Wallet, color: 'bg-slate-600 text-white', available: false },
   { name: 'Ventes', href: '/sales', icon: ShoppingCart, color: 'bg-sky-600 text-white', available: false },
   { name: 'Rapports', href: '/reports', icon: BarChart3, color: 'bg-amber-600 text-white', available: false },
-  { name: 'Documents', href: '/documents', icon: FileText, color: 'bg-indigo-600 text-white', available: false },
+  { name: 'Documents', href: '/documents', icon: FileText, color: 'bg-cyan-700 text-white', available: false },
   { name: 'Entreprise', href: '/company', icon: Settings, color: 'bg-slate-500 text-white', available: true },
 ];
 

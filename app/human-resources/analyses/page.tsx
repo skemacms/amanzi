@@ -25,7 +25,7 @@ const turnoverData = [
 
 const costPerDeptData = [
   { dept: 'Tech', cout: 750, fill: '#017e84' },
-  { dept: 'Finance', cout: 375, fill: '#714B67' },
+  { dept: 'Finance', cout: 375, fill: '#0d5c63' },
   { dept: 'Commercial', cout: 700, fill: '#1e293b' },
 ];
 
@@ -43,7 +43,7 @@ const kpis = [
   { label: 'Taux de rotation', value: '8.3%', change: '-2.1%', trend: 'down' as const, icon: Users, color: 'text-teal-600 bg-teal-50' },
   { label: 'Cout moyen recrutement', value: '85K', change: '+12K', trend: 'up' as const, icon: DollarSign, color: 'text-amber-600 bg-amber-50' },
   { label: 'Taux absenteisme', value: '3.3%', change: '+0.4%', trend: 'up' as const, icon: Clock, color: 'text-red-600 bg-red-50' },
-  { label: 'Anciennete moyenne', value: '4.2 ans', change: '+0.3', trend: 'up' as const, icon: UserCheck, color: 'text-indigo-600 bg-indigo-50' },
+  { label: 'Anciennete moyenne', value: '4.2 ans', change: '+0.3', trend: 'up' as const, icon: UserCheck, color: 'text-cyan-700 bg-cyan-50' },
 ];
 
 export default function AnalysesPage() {

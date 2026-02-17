@@ -18,7 +18,7 @@ const kpiCards = [
   { label: 'Employes actifs', value: '4', change: '+1', trend: 'up' as const, icon: Users, href: '/human-resources/employees', color: 'text-teal-600 bg-teal-50', sparkData: [3,3,3,3,4,4,4] },
   { label: 'Masse salariale', value: '1.6M', change: '+8.2%', trend: 'up' as const, icon: DollarSign, href: '/human-resources/payroll', color: 'text-emerald-600 bg-emerald-50', sparkData: [1.1,1.2,1.3,1.35,1.4,1.5,1.6] },
   { label: 'Cout moyen / employe', value: '400K', change: '-2.1%', trend: 'down' as const, icon: TrendingDown, href: '/human-resources/payslips', color: 'text-sky-600 bg-sky-50', sparkData: [420,415,410,408,405,402,400] },
-  { label: 'Taux de presence', value: '95.5%', change: '+1.3%', trend: 'up' as const, icon: UserCheck, href: '/human-resources/payroll', color: 'text-indigo-600 bg-indigo-50', sparkData: [91,92,93,94,94.5,95,95.5] },
+  { label: 'Taux de presence', value: '95.5%', change: '+1.3%', trend: 'up' as const, icon: UserCheck, href: '/human-resources/payroll', color: 'text-cyan-700 bg-cyan-50', sparkData: [91,92,93,94,94.5,95,95.5] },
   { label: 'Primes versees', value: '125K', change: '+15K', trend: 'up' as const, icon: Award, href: '/human-resources/bonuses', color: 'text-amber-600 bg-amber-50', sparkData: [80,85,90,95,100,110,125] },
 ];
 
@@ -41,7 +41,7 @@ const salaryDistribution = [
 
 const departmentBreakdown = [
   { name: 'Tech', value: 2, color: '#017e84' },
-  { name: 'Finance', value: 1, color: '#714B67' },
+  { name: 'Finance', value: 1, color: '#0d5c63' },
   { name: 'Commercial', value: 1, color: '#1e293b' },
 ];
 
@@ -230,7 +230,7 @@ export default function HrDashboard() {
                 <Tooltip {...chartTooltipStyle} formatter={(value: number) => [`${value}K FCFA`]} />
                 <Area type="monotone" dataKey="brut" stroke="#1e293b" strokeWidth={2} fill="url(#brutGrad)" name="Brut" />
                 <Area type="monotone" dataKey="net" stroke="#017e84" strokeWidth={2} fill="url(#netGrad)" name="Net" />
-                <Area type="monotone" dataKey="charges" stroke="#714B67" strokeWidth={1.5} fill="none" strokeDasharray="4 4" name="Charges" />
+                <Area type="monotone" dataKey="charges" stroke="#d97706" strokeWidth={1.5} fill="none" strokeDasharray="4 4" name="Charges" />
               </AreaChart>
             </ResponsiveContainer>
           </div>
