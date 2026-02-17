@@ -29,9 +29,9 @@ const sectionCardClass = 'rounded-xs border bg-card p-5';
 const sectionTitleClass = 'mb-4 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground';
 
 const SIDEBAR_TABS = [
-  { id: 'travail', label: 'Travail', icon: Briefcase },
-  { id: 'cv', label: 'CV', icon: FileText },
   { id: 'personnel', label: 'Personnel', icon: User },
+  { id: 'cv', label: 'CV', icon: FileText },
+  { id: 'travail', label: 'Travail', icon: Briefcase },
   { id: 'paie', label: 'Paie', icon: Wallet },
   { id: 'ajustements', label: 'Ajustements de salaire', icon: SlidersHorizontal },
   { id: 'parametres', label: 'Parametres', icon: Settings },
@@ -58,7 +58,7 @@ const DAYS_OF_WEEK = [
 
 export default function NewEmployeePage() {
   const { addToast } = useToast();
-  const [activeTab, setActiveTab] = useState<SidebarTab>('travail');
+  const [activeTab, setActiveTab] = useState<SidebarTab>('personnel');
   const [activeRightTab, setActiveRightTab] = useState<RightTab>('historique');
   const [scheduleMode, setScheduleMode] = useState<WorkTrackingMode>(WorkTrackingMode.DAYS);
   const [notes, setNotes] = useState<{ id: string; text: string; date: string }[]>([]);

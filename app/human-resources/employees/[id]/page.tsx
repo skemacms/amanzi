@@ -31,9 +31,9 @@ const dtClass = 'text-sm text-muted-foreground';
 const ddClass = 'text-sm font-medium text-foreground';
 
 const SIDEBAR_TABS = [
-  { id: 'travail', label: 'Travail', icon: Briefcase },
-  { id: 'cv', label: 'CV', icon: FileText },
   { id: 'personnel', label: 'Personnel', icon: User },
+  { id: 'cv', label: 'CV', icon: FileText },
+  { id: 'travail', label: 'Travail', icon: Briefcase },
   { id: 'paie', label: 'Paie', icon: Wallet },
   { id: 'ajustements', label: 'Ajustements de salaire', icon: SlidersHorizontal },
   { id: 'parametres', label: 'Parametres', icon: Settings },
@@ -68,7 +68,7 @@ const mockActivity = [
 export default function EmployeeDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
   const employee = mockEmployees.find((e) => e.id === id);
-  const [activeTab, setActiveTab] = useState<SidebarTab>('travail');
+  const [activeTab, setActiveTab] = useState<SidebarTab>('personnel');
   const [activeRightTab, setActiveRightTab] = useState<RightTab>('historique');
   const [newNote, setNewNote] = useState('');
   const [notes, setNotes] = useState(mockNotes);
