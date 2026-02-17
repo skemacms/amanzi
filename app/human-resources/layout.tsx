@@ -17,8 +17,8 @@ import {
   CalendarOff,
   FileSignature,
   ChevronDown,
-  DollarSign,
-  Search,
+  Banknote,
+  GraduationCap,
 } from 'lucide-react';
 import { MainNavbar } from '@/core/components/main-navbar';
 
@@ -48,7 +48,7 @@ const navigation: NavEntry[] = [
   { label: 'Conges', href: '/human-resources/conges', icon: CalendarOff },
   {
     label: 'Remuneration',
-    icon: DollarSign,
+    icon: Banknote,
     children: [
       { label: 'Paie', href: '/human-resources/payroll', icon: CalendarDays },
       { label: 'Bulletins', href: '/human-resources/payslips', icon: FileText },
@@ -58,7 +58,7 @@ const navigation: NavEntry[] = [
   },
   {
     label: 'Talent',
-    icon: Search,
+    icon: GraduationCap,
     children: [
       { label: 'Recrutements', href: '/human-resources/recrutements', icon: UserPlus },
       { label: 'Certifications', href: '/human-resources/certifications', icon: BadgeCheck },
@@ -78,22 +78,37 @@ function isGroupActive(pathname: string, group: NavGroup) {
 
 function DropdownMenu({ group, pathname }: { group: NavGroup; pathname: string }) {
   const [open, setOpen] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
   const active = isGroupActive(pathname, group);
   const Icon = group.icon;
 
   useEffect(() => {
-    function handler(e: MouseEvent) {
-      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    if (!open) return;
+    function handleClick(e: MouseEvent) {
+      const target = e.target as Node;
+      if (
+        triggerRef.current?.contains(target) ||
+        panelRef.current?.contains(target)
+      ) return;
+      setOpen(false);
     }
-    document.addEventListener('mousedown', handler);
-    return () => document.removeEventListener('mousedown', handler);
-  }, []);
+    // Use setTimeout to avoid catching the same click that opened the menu
+    const timer = setTimeout(() => {
+      document.addEventListener('click', handleClick);
+    }, 0);
+    return () => {
+      clearTimeout(timer);
+      document.removeEventListener('click', handleClick);
+    };
+  }, [open]);
 
   return (
-    <div ref={ref} className="relative">
+    <div className="relative">
       <button
-        onClick={() => setOpen(!open)}
+        ref={triggerRef}
+        type="button"
+        onClick={() => setOpen((prev) => !prev)}
         className={`relative flex shrink-0 items-center gap-1.5 px-3.5 py-3 text-xs font-medium transition-colors ${
           active ? 'text-accent' : 'text-muted-foreground hover:text-foreground'
         }`}
@@ -107,7 +122,10 @@ function DropdownMenu({ group, pathname }: { group: NavGroup; pathname: string }
       </button>
 
       {open && (
-        <div className="absolute left-0 top-full z-50 mt-px min-w-[180px] rounded-xs border bg-card py-1 shadow-lg">
+        <div
+          ref={panelRef}
+          className="absolute left-0 top-full z-50 mt-px min-w-[180px] rounded-xs border bg-card py-1 shadow-lg"
+        >
           {group.children.map((child) => {
             const CIcon = child.icon;
             const childActive = isActiveLink(pathname, child.href);
@@ -140,8 +158,8 @@ export default function HumanResourcesLayout({ children }: { children: React.Rea
     <div className="flex min-h-screen flex-col bg-background">
       <MainNavbar currentApp="Ressources Humaines" />
 
-      <nav className="border-b bg-card">
-        <div className="flex items-center gap-0 overflow-x-auto px-4">
+      <nav className="relative border-b bg-card">
+        <div className="flex items-center gap-0 px-4">
           {navigation.map((entry, i) => {
             if (isGroup(entry)) {
               return <DropdownMenu key={i} group={entry} pathname={pathname} />;
