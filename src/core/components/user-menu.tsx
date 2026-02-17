@@ -22,16 +22,16 @@ export function UserMenu() {
     <div className="relative" ref={ref}>
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-2 rounded-md px-2 py-1 transition-colors hover:bg-foreground/10"
+        className="flex items-center gap-2 rounded-md px-2 py-1 transition-colors hover:bg-navbar-foreground/10"
       >
         <div className="flex h-7 w-7 items-center justify-center rounded-full bg-accent text-xs font-bold text-white">
           A
         </div>
         <div className="hidden text-left md:block">
-          <p className="text-xs font-medium text-foreground">Admin</p>
-          <p className="text-[10px] text-muted-foreground">Amanzi Technologies</p>
+          <p className="text-xs font-medium text-navbar-foreground">Admin</p>
+          <p className="text-[10px] text-navbar-foreground/60">Amanzi Technologies</p>
         </div>
-        <ChevronDown className="hidden h-3.5 w-3.5 text-muted-foreground md:block" />
+        <ChevronDown className="hidden h-3.5 w-3.5 text-navbar-foreground/60 md:block" />
       </button>
 
       {open && (

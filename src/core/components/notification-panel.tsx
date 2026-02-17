@@ -47,7 +47,7 @@ export function NotificationPanel() {
     <div className="relative" ref={ref}>
       <button
         onClick={() => setOpen(!open)}
-        className="relative flex h-8 w-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-foreground/10 hover:text-foreground"
+        className="relative flex h-8 w-8 items-center justify-center rounded-md text-navbar-foreground/70 transition-colors hover:bg-navbar-foreground/10 hover:text-navbar-foreground"
         aria-label="Notifications"
       >
         <Bell className="h-[18px] w-[18px]" />

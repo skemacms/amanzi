@@ -1,8 +1,7 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
-import { Search } from 'lucide-react';
+import { Search, Droplets } from 'lucide-react';
 import { AppSwitcher } from './app-switcher';
 import { NotificationPanel } from './notification-panel';
 import { MessageButton, TaskButton } from './navbar-actions';
@@ -19,11 +18,13 @@ export function MainNavbar({ currentApp }: MainNavbarProps) {
         {/* Left section */}
         <div className="flex items-center gap-3">
           <Link href="/" className="flex items-center gap-2.5 transition-opacity hover:opacity-80">
-            <Image src="/logo.png" alt="Amanzi" width={26} height={26} />
+            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-accent">
+              <Droplets className="h-4 w-4 text-accent-foreground" />
+            </div>
             <span className="text-sm font-semibold tracking-tight">Amanzi</span>
           </Link>
 
-          <div className="mx-2 h-5 w-px bg-foreground/20" />
+          <div className="mx-2 h-5 w-px bg-navbar-foreground/20" />
 
           <AppSwitcher />
 
@@ -37,11 +38,11 @@ export function MainNavbar({ currentApp }: MainNavbarProps) {
         {/* Center - Search */}
         <div className="hidden flex-1 justify-center px-8 md:flex">
           <div className="relative w-full max-w-md">
-            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-foreground/40" />
+            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-navbar-foreground/40" />
             <input
               type="text"
               placeholder="Rechercher..."
-              className="w-full rounded-md bg-foreground/10 py-1.5 pl-9 pr-4 text-sm text-navbar-foreground placeholder:text-foreground/40 outline-none transition-colors focus:bg-foreground/15"
+              className="w-full rounded-md bg-navbar-foreground/10 py-1.5 pl-9 pr-4 text-sm text-navbar-foreground placeholder:text-navbar-foreground/40 outline-none transition-colors focus:bg-navbar-foreground/15"
             />
           </div>
         </div>
@@ -51,7 +52,7 @@ export function MainNavbar({ currentApp }: MainNavbarProps) {
           <MessageButton />
           <TaskButton />
           <NotificationPanel />
-          <div className="mx-1.5 h-5 w-px bg-foreground/20" />
+          <div className="mx-1.5 h-5 w-px bg-navbar-foreground/20" />
           <UserMenu />
         </div>
       </div>

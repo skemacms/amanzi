@@ -27,7 +27,7 @@ const apps: AppItem[] = [
   { name: 'Ventes', href: '/sales', icon: ShoppingCart, color: 'bg-sky-600 text-white', available: false },
   { name: 'Rapports', href: '/reports', icon: BarChart3, color: 'bg-amber-600 text-white', available: false },
   { name: 'Documents', href: '/documents', icon: FileText, color: 'bg-indigo-600 text-white', available: false },
-  { name: 'Parametres', href: '/settings', icon: Settings, color: 'bg-slate-500 text-white', available: false },
+  { name: 'Parametres', href: '/settings', icon: Settings, color: 'bg-slate-500 text-white', available: true },
 ];
 
 export function AppSwitcher() {
@@ -48,7 +48,7 @@ export function AppSwitcher() {
     <div className="relative" ref={ref}>
       <button
         onClick={() => setOpen(!open)}
-        className="flex h-8 w-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-foreground/10 hover:text-foreground"
+        className="flex h-8 w-8 items-center justify-center rounded-md text-navbar-foreground/70 transition-colors hover:bg-navbar-foreground/10 hover:text-navbar-foreground"
         aria-label="Applications"
       >
         <LayoutGrid className="h-[18px] w-[18px]" />

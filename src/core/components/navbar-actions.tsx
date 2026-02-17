@@ -9,7 +9,7 @@ export function MessageButton() {
 
   return (
     <button
-      className="relative flex h-8 w-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-foreground/10 hover:text-foreground"
+      className="relative flex h-8 w-8 items-center justify-center rounded-md text-navbar-foreground/70 transition-colors hover:bg-navbar-foreground/10 hover:text-navbar-foreground"
       aria-label="Messages"
     >
       <MessageSquare className="h-[18px] w-[18px]" />
@@ -28,7 +28,7 @@ export function TaskButton() {
 
   return (
     <button
-      className="relative flex h-8 w-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-foreground/10 hover:text-foreground"
+      className="relative flex h-8 w-8 items-center justify-center rounded-md text-navbar-foreground/70 transition-colors hover:bg-navbar-foreground/10 hover:text-navbar-foreground"
       aria-label="Taches"
     >
       <CheckSquare className="h-[18px] w-[18px]" />
