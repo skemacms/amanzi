@@ -74,9 +74,9 @@ const modules: AppModule[] = [
     available: false,
   },
   {
-    name: 'Parametres',
-    description: 'Entreprise, utilisateurs, configuration globale',
-    href: '/settings',
+    name: 'Entreprise',
+    description: 'Identite, parametres fiscaux, securite et configuration',
+    href: '/company',
     icon: '/icons/app-settings.jpg',
     available: true,
   },

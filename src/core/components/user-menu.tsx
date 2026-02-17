@@ -42,7 +42,7 @@ export function UserMenu() {
           </div>
           <div className="py-0.5">
             <Link
-              href="/settings"
+              href="/company"
               onClick={() => setOpen(false)}
               className="flex items-center gap-2 px-3 py-1.5 text-xs text-foreground transition-colors hover:bg-muted"
             >
@@ -50,7 +50,7 @@ export function UserMenu() {
               Mon profil
             </Link>
             <Link
-              href="/settings"
+              href="/company"
               onClick={() => setOpen(false)}
               className="flex items-center gap-2 px-3 py-1.5 text-xs text-foreground transition-colors hover:bg-muted"
             >
@@ -58,7 +58,7 @@ export function UserMenu() {
               Entreprise
             </Link>
             <Link
-              href="/settings"
+              href="/company"
               onClick={() => setOpen(false)}
               className="flex items-center gap-2 px-3 py-1.5 text-xs text-foreground transition-colors hover:bg-muted"
             >
@@ -66,7 +66,7 @@ export function UserMenu() {
               Parametres
             </Link>
             <Link
-              href="/settings"
+              href="/company/security"
               onClick={() => setOpen(false)}
               className="flex items-center gap-2 px-3 py-1.5 text-xs text-foreground transition-colors hover:bg-muted"
             >

@@ -8,21 +8,29 @@ import {
   FileText,
   Award,
   Grid3x3,
-  Bell,
   Settings,
   LayoutDashboard,
+  BarChart3,
+  BadgeCheck,
+  UserPlus,
+  CalendarOff,
+  FileSignature,
 } from 'lucide-react';
 import { MainNavbar } from '@/core/components/main-navbar';
 
 const navItems = [
   { label: 'Vue d\'ensemble', href: '/human-resources', icon: LayoutDashboard, exact: true },
   { label: 'Employes', href: '/human-resources/employees', icon: Users },
+  { label: 'Contrats', href: '/human-resources/contrats', icon: FileSignature },
+  { label: 'Conges', href: '/human-resources/conges', icon: CalendarOff },
   { label: 'Paie', href: '/human-resources/payroll', icon: CalendarDays },
   { label: 'Bulletins', href: '/human-resources/payslips', icon: FileText },
   { label: 'Primes', href: '/human-resources/bonuses', icon: Award },
   { label: 'Grille salariale', href: '/human-resources/salary-grid', icon: Grid3x3 },
-  { label: 'Notifications', href: '/human-resources/notifications', icon: Bell },
-  { label: 'Parametres', href: '/human-resources/settings', icon: Settings },
+  { label: 'Recrutements', href: '/human-resources/recrutements', icon: UserPlus },
+  { label: 'Certifications', href: '/human-resources/certifications', icon: BadgeCheck },
+  { label: 'Analyses', href: '/human-resources/analyses', icon: BarChart3 },
+  { label: 'Configuration', href: '/human-resources/settings', icon: Settings },
 ];
 
 export default function HumanResourcesLayout({ children }: { children: React.ReactNode }) {
@@ -32,7 +40,7 @@ export default function HumanResourcesLayout({ children }: { children: React.Rea
     <div className="flex min-h-screen flex-col bg-background">
       <MainNavbar currentApp="Ressources Humaines" />
 
-      {/* Tab navigation - Odoo/SAP style */}
+      {/* Tab navigation */}
       <nav className="border-b bg-card">
         <div className="flex items-center gap-0 overflow-x-auto px-4">
           {navItems.map((item) => {
@@ -61,7 +69,6 @@ export default function HumanResourcesLayout({ children }: { children: React.Rea
         </div>
       </nav>
 
-      {/* Content */}
       <main className="flex-1">
         {children}
       </main>

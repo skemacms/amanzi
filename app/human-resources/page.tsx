@@ -4,6 +4,7 @@ import { useState } from 'react';
 import {
   Users, CalendarDays, FileText, Award, TrendingUp, TrendingDown,
   ArrowUpRight, DollarSign, Clock, UserCheck, UserMinus, Briefcase, Activity,
+  AlertTriangle, CreditCard, IdCard, FileSignature,
 } from 'lucide-react';
 import Link from 'next/link';
 import {
@@ -162,6 +163,34 @@ export default function HrDashboard() {
                       {kpi.change}
                     </span>
                   </div>
+                </div>
+              </div>
+            </Link>
+          );
+        })}
+      </div>
+
+      {/* Warning Alerts */}
+      <div className="mb-6 grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-4">
+        {[
+          { icon: AlertTriangle, label: 'Avertissements', value: '1', desc: 'Cedric Banzouzi - contrat expire', color: 'border-amber-200 bg-amber-50', iconColor: 'text-amber-600', href: '/human-resources/contrats' },
+          { icon: FileSignature, label: 'Employes sans contrats ouverts', value: '1', desc: 'Cedric Banzouzi', color: 'border-red-200 bg-red-50', iconColor: 'text-red-600', href: '/human-resources/contrats' },
+          { icon: IdCard, label: 'Sans numero d\'identification', value: '1', desc: 'Cedric Banzouzi (pas de N CNSS)', color: 'border-orange-200 bg-orange-50', iconColor: 'text-orange-600', href: '/human-resources/employees' },
+          { icon: CreditCard, label: 'Sans compte bancaire', value: '1', desc: 'Cedric Banzouzi', color: 'border-rose-200 bg-rose-50', iconColor: 'text-rose-600', href: '/human-resources/employees' },
+        ].map((alert) => {
+          const Icon = alert.icon;
+          return (
+            <Link key={alert.label} href={alert.href}>
+              <div className={`flex items-start gap-3 rounded-xs border p-3.5 transition-all hover:shadow-sm ${alert.color}`}>
+                <div className={`mt-0.5 ${alert.iconColor}`}>
+                  <Icon className="h-4 w-4" />
+                </div>
+                <div className="min-w-0">
+                  <div className="flex items-center gap-1.5">
+                    <span className="font-mono text-lg font-bold text-foreground">{alert.value}</span>
+                    <span className="text-xs font-medium text-foreground">{alert.label}</span>
+                  </div>
+                  <p className="mt-0.5 truncate text-[11px] text-muted-foreground">{alert.desc}</p>
                 </div>
               </div>
             </Link>
@@ -330,8 +359,8 @@ export default function HrDashboard() {
               { label: 'Calculer la paie', href: '/human-resources/payroll', icon: CalendarDays, desc: 'Lancer le calcul mensuel' },
               { label: 'Voir les bulletins', href: '/human-resources/payslips', icon: FileText, desc: 'Consulter les fiches de paie' },
               { label: 'Gerer les primes', href: '/human-resources/bonuses', icon: Award, desc: 'Configurer les definitions' },
-              { label: 'Grille salariale', href: '/human-resources/salary-grid', icon: Briefcase, desc: 'Convention et echelons' },
-              { label: 'Parametres RH', href: '/human-resources/settings', icon: Clock, desc: 'Configuration du module' },
+              { label: 'Contrats', href: '/human-resources/contrats', icon: Briefcase, desc: 'Gestion des contrats' },
+              { label: 'Conges', href: '/human-resources/conges', icon: Clock, desc: 'Demandes et absences' },
             ].map((action) => {
               const Icon = action.icon;
               return (
@@ -358,7 +387,7 @@ export default function HrDashboard() {
         <div className="rounded-xs border bg-card p-5">
           <div className="mb-4 flex items-center justify-between">
             <h2 className="text-sm font-semibold text-foreground">Activite recente</h2>
-            <Link href="/human-resources/notifications" className="text-[11px] font-medium text-accent hover:underline">
+            <Link href="/human-resources/analyses" className="text-[11px] font-medium text-accent hover:underline">
               Tout voir
             </Link>
           </div>

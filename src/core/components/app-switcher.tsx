@@ -27,7 +27,7 @@ const apps: AppItem[] = [
   { name: 'Ventes', href: '/sales', icon: ShoppingCart, color: 'bg-sky-600 text-white', available: false },
   { name: 'Rapports', href: '/reports', icon: BarChart3, color: 'bg-amber-600 text-white', available: false },
   { name: 'Documents', href: '/documents', icon: FileText, color: 'bg-indigo-600 text-white', available: false },
-  { name: 'Parametres', href: '/settings', icon: Settings, color: 'bg-slate-500 text-white', available: true },
+  { name: 'Entreprise', href: '/company', icon: Settings, color: 'bg-slate-500 text-white', available: true },
 ];
 
 export function AppSwitcher() {
