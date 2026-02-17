@@ -47,48 +47,48 @@ export function NotificationPanel() {
     <div className="relative" ref={ref}>
       <button
         onClick={() => setOpen(!open)}
-        className="relative flex h-8 w-8 items-center justify-center rounded-md text-navbar-foreground/70 transition-colors hover:bg-navbar-foreground/10 hover:text-navbar-foreground"
+        className="relative flex h-7 w-7 items-center justify-center rounded-xs text-navbar-foreground/70 transition-colors hover:bg-navbar-foreground/10 hover:text-navbar-foreground"
         aria-label="Notifications"
       >
-        <Bell className="h-[18px] w-[18px]" />
+        <Bell className="h-4 w-4" />
         {unreadCount > 0 && (
-          <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-red-500 px-1 text-[10px] font-bold text-white">
+          <span className="absolute -right-0.5 -top-0.5 flex h-3.5 min-w-3.5 items-center justify-center rounded-full bg-red-500 px-0.5 text-[9px] font-bold text-white">
             {unreadCount}
           </span>
         )}
       </button>
 
       {open && (
-        <div className="absolute right-0 top-full mt-2 w-96 rounded-lg border bg-card shadow-xl z-50">
+        <div className="absolute right-0 top-full mt-1.5 w-80 rounded-xs border bg-card shadow-lg z-50">
           {/* Header */}
-          <div className="flex items-center justify-between border-b px-4 py-3">
-            <h3 className="text-sm font-semibold text-foreground">Notifications</h3>
+          <div className="flex items-center justify-between border-b px-3 py-2.5">
+            <h3 className="text-xs font-semibold text-foreground">Notifications</h3>
             {unreadCount > 0 && (
               <button
                 onClick={markAllAsRead}
-                className="flex items-center gap-1 text-xs font-medium text-accent hover:underline"
+                className="flex items-center gap-1 text-[11px] font-medium text-accent hover:underline"
               >
-                <CheckCheck className="h-3.5 w-3.5" />
+                <CheckCheck className="h-3 w-3" />
                 Tout marquer lu
               </button>
             )}
           </div>
 
           {/* Tabs */}
-          <div className="flex border-b px-2">
+          <div className="flex border-b px-1.5">
             {tabs.map((tab) => {
               const Icon = tab.icon;
               return (
                 <button
                   key={tab.key}
                   onClick={() => setActiveTab(tab.key)}
-                  className={`flex items-center gap-1 px-3 py-2 text-xs font-medium border-b-2 transition-colors ${
+                  className={`flex items-center gap-1 px-2.5 py-2 text-[11px] font-medium border-b-2 transition-colors ${
                     activeTab === tab.key
                       ? 'border-accent text-accent'
                       : 'border-transparent text-muted-foreground hover:text-foreground'
                   }`}
                 >
-                  <Icon className="h-3.5 w-3.5" />
+                  <Icon className="h-3 w-3" />
                   {tab.label}
                 </button>
               );
@@ -96,9 +96,9 @@ export function NotificationPanel() {
           </div>
 
           {/* List */}
-          <div className="max-h-80 overflow-y-auto">
+          <div className="max-h-72 overflow-y-auto">
             {filtered.length === 0 ? (
-              <div className="px-4 py-8 text-center text-sm text-muted-foreground">
+              <div className="px-3 py-6 text-center text-xs text-muted-foreground">
                 Aucune notification
               </div>
             ) : (
@@ -108,24 +108,24 @@ export function NotificationPanel() {
                   <button
                     key={notif.id}
                     onClick={() => markAsRead(notif.id)}
-                    className={`flex w-full items-start gap-3 px-4 py-3 text-left transition-colors hover:bg-muted/50 ${
+                    className={`flex w-full items-start gap-2.5 px-3 py-2.5 text-left transition-colors hover:bg-muted/50 ${
                       !notif.isRead ? 'bg-accent/5' : ''
                     }`}
                   >
-                    <Icon className={`mt-0.5 h-4 w-4 shrink-0 ${categoryColors[notif.category]}`} />
+                    <Icon className={`mt-0.5 h-3.5 w-3.5 shrink-0 ${categoryColors[notif.category]}`} />
                     <div className="min-w-0 flex-1">
-                      <div className="flex items-center gap-2">
-                        <span className={`text-xs font-semibold ${!notif.isRead ? 'text-foreground' : 'text-muted-foreground'}`}>
+                      <div className="flex items-center gap-1.5">
+                        <span className={`text-[11px] font-semibold ${!notif.isRead ? 'text-foreground' : 'text-muted-foreground'}`}>
                           {notif.title}
                         </span>
                         {!notif.isRead && (
                           <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
                         )}
                       </div>
-                      <p className="mt-0.5 text-[11px] leading-relaxed text-muted-foreground line-clamp-2">
+                      <p className="mt-0.5 text-[10px] leading-relaxed text-muted-foreground line-clamp-2">
                         {notif.description}
                       </p>
-                      <p className="mt-1 text-[10px] text-muted-foreground/60">
+                      <p className="mt-0.5 text-[9px] text-muted-foreground/60">
                         {new Date(notif.time).toLocaleDateString('fr-FR', {
                           day: '2-digit',
                           month: 'short',

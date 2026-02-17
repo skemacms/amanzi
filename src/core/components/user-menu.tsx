@@ -22,61 +22,61 @@ export function UserMenu() {
     <div className="relative" ref={ref}>
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-2 rounded-md px-2 py-1 transition-colors hover:bg-navbar-foreground/10"
+        className="flex items-center gap-2 rounded-xs px-1.5 py-1 transition-colors hover:bg-navbar-foreground/10"
       >
-        <div className="flex h-7 w-7 items-center justify-center rounded-full bg-accent text-xs font-bold text-white">
+        <div className="flex h-6 w-6 items-center justify-center rounded-xs bg-accent text-[10px] font-bold text-white">
           A
         </div>
         <div className="hidden text-left md:block">
-          <p className="text-xs font-medium text-navbar-foreground">Admin</p>
-          <p className="text-[10px] text-navbar-foreground/60">Amanzi Technologies</p>
+          <p className="text-[11px] font-medium leading-tight text-navbar-foreground">Admin</p>
+          <p className="text-[9px] leading-tight text-navbar-foreground/50">Amanzi Technologies</p>
         </div>
-        <ChevronDown className="hidden h-3.5 w-3.5 text-navbar-foreground/60 md:block" />
+        <ChevronDown className="hidden h-3 w-3 text-navbar-foreground/50 md:block" />
       </button>
 
       {open && (
-        <div className="absolute right-0 top-full mt-2 w-56 rounded-lg border bg-card shadow-xl z-50">
-          <div className="border-b px-4 py-3">
-            <p className="text-sm font-semibold text-foreground">Admin</p>
-            <p className="text-xs text-muted-foreground">admin@amanzi.tech</p>
+        <div className="absolute right-0 top-full mt-1.5 w-52 rounded-xs border bg-card shadow-lg z-50">
+          <div className="border-b px-3 py-2.5">
+            <p className="text-xs font-semibold text-foreground">Admin</p>
+            <p className="text-[11px] text-muted-foreground">admin@amanzi.tech</p>
           </div>
-          <div className="py-1">
+          <div className="py-0.5">
             <Link
               href="/settings"
               onClick={() => setOpen(false)}
-              className="flex items-center gap-2.5 px-4 py-2 text-sm text-foreground transition-colors hover:bg-muted"
+              className="flex items-center gap-2 px-3 py-1.5 text-xs text-foreground transition-colors hover:bg-muted"
             >
-              <User className="h-4 w-4 text-muted-foreground" />
+              <User className="h-3.5 w-3.5 text-muted-foreground" />
               Mon profil
             </Link>
             <Link
               href="/settings"
               onClick={() => setOpen(false)}
-              className="flex items-center gap-2.5 px-4 py-2 text-sm text-foreground transition-colors hover:bg-muted"
+              className="flex items-center gap-2 px-3 py-1.5 text-xs text-foreground transition-colors hover:bg-muted"
             >
-              <Building2 className="h-4 w-4 text-muted-foreground" />
+              <Building2 className="h-3.5 w-3.5 text-muted-foreground" />
               Entreprise
             </Link>
             <Link
               href="/settings"
               onClick={() => setOpen(false)}
-              className="flex items-center gap-2.5 px-4 py-2 text-sm text-foreground transition-colors hover:bg-muted"
+              className="flex items-center gap-2 px-3 py-1.5 text-xs text-foreground transition-colors hover:bg-muted"
             >
-              <Settings className="h-4 w-4 text-muted-foreground" />
+              <Settings className="h-3.5 w-3.5 text-muted-foreground" />
               Parametres
             </Link>
             <Link
               href="/settings"
               onClick={() => setOpen(false)}
-              className="flex items-center gap-2.5 px-4 py-2 text-sm text-foreground transition-colors hover:bg-muted"
+              className="flex items-center gap-2 px-3 py-1.5 text-xs text-foreground transition-colors hover:bg-muted"
             >
-              <Shield className="h-4 w-4 text-muted-foreground" />
+              <Shield className="h-3.5 w-3.5 text-muted-foreground" />
               Securite
             </Link>
           </div>
-          <div className="border-t py-1">
-            <button className="flex w-full items-center gap-2.5 px-4 py-2 text-sm text-red-600 transition-colors hover:bg-red-50">
-              <LogOut className="h-4 w-4" />
+          <div className="border-t py-0.5">
+            <button className="flex w-full items-center gap-2 px-3 py-1.5 text-xs text-red-600 transition-colors hover:bg-red-50">
+              <LogOut className="h-3.5 w-3.5" />
               Deconnexion
             </button>
           </div>

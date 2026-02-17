@@ -48,31 +48,31 @@ export function AppSwitcher() {
     <div className="relative" ref={ref}>
       <button
         onClick={() => setOpen(!open)}
-        className="flex h-8 w-8 items-center justify-center rounded-md text-navbar-foreground/70 transition-colors hover:bg-navbar-foreground/10 hover:text-navbar-foreground"
+        className="flex h-7 w-7 items-center justify-center rounded-xs text-navbar-foreground/70 transition-colors hover:bg-navbar-foreground/10 hover:text-navbar-foreground"
         aria-label="Applications"
       >
-        <LayoutGrid className="h-[18px] w-[18px]" />
+        <LayoutGrid className="h-4 w-4" />
       </button>
 
       {open && (
-        <div className="absolute left-0 top-full mt-2 w-72 rounded-lg border bg-card shadow-xl z-50">
-          <div className="p-3">
-            <p className="mb-2 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
+        <div className="absolute left-0 top-full mt-1.5 w-64 rounded-xs border bg-card shadow-lg z-50">
+          <div className="p-2.5">
+            <p className="mb-2 px-1 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
               Applications
             </p>
-            <div className="grid grid-cols-3 gap-1">
+            <div className="grid grid-cols-3 gap-0.5">
               {apps.map((app) => {
                 const Icon = app.icon;
                 const content = (
                   <div
-                    className={`flex flex-col items-center gap-1.5 rounded-lg p-3 text-center transition-colors ${
+                    className={`flex flex-col items-center gap-1.5 rounded-xs p-2.5 text-center transition-colors ${
                       app.available
                         ? 'cursor-pointer hover:bg-muted'
                         : 'cursor-not-allowed opacity-40'
                     }`}
                   >
-                    <div className={`flex h-9 w-9 items-center justify-center rounded-lg ${app.color}`}>
-                      <Icon className="h-4 w-4" />
+                    <div className={`flex h-8 w-8 items-center justify-center rounded-xs ${app.color}`}>
+                      <Icon className="h-3.5 w-3.5" />
                     </div>
                     <span className="text-[10px] font-medium leading-tight text-foreground">
                       {app.name}
@@ -95,7 +95,7 @@ export function AppSwitcher() {
             <Link
               href="/"
               onClick={() => setOpen(false)}
-              className="block text-center text-xs font-medium text-accent hover:underline"
+              className="block text-center text-[11px] font-medium text-accent hover:underline"
             >
               Voir toutes les applications
             </Link>

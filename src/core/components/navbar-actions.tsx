@@ -9,12 +9,12 @@ export function MessageButton() {
 
   return (
     <button
-      className="relative flex h-8 w-8 items-center justify-center rounded-md text-navbar-foreground/70 transition-colors hover:bg-navbar-foreground/10 hover:text-navbar-foreground"
+      className="relative flex h-7 w-7 items-center justify-center rounded-xs text-navbar-foreground/70 transition-colors hover:bg-navbar-foreground/10 hover:text-navbar-foreground"
       aria-label="Messages"
     >
-      <MessageSquare className="h-[18px] w-[18px]" />
+      <MessageSquare className="h-4 w-4" />
       {count > 0 && (
-        <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-sky-500 px-1 text-[10px] font-bold text-white">
+        <span className="absolute -right-0.5 -top-0.5 flex h-3.5 min-w-3.5 items-center justify-center rounded-full bg-sky-500 px-0.5 text-[9px] font-bold text-white">
           {count}
         </span>
       )}
@@ -28,12 +28,12 @@ export function TaskButton() {
 
   return (
     <button
-      className="relative flex h-8 w-8 items-center justify-center rounded-md text-navbar-foreground/70 transition-colors hover:bg-navbar-foreground/10 hover:text-navbar-foreground"
+      className="relative flex h-7 w-7 items-center justify-center rounded-xs text-navbar-foreground/70 transition-colors hover:bg-navbar-foreground/10 hover:text-navbar-foreground"
       aria-label="Taches"
     >
-      <CheckSquare className="h-[18px] w-[18px]" />
+      <CheckSquare className="h-4 w-4" />
       {count > 0 && (
-        <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-teal-500 px-1 text-[10px] font-bold text-white">
+        <span className="absolute -right-0.5 -top-0.5 flex h-3.5 min-w-3.5 items-center justify-center rounded-full bg-teal-500 px-0.5 text-[9px] font-bold text-white">
           {count}
         </span>
       )}
